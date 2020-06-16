@@ -83,6 +83,7 @@ TEST_CASE ("[to_cpu_architecture]", "system")
         {CPUArchitecture::X64, "AmD64"},
         {CPUArchitecture::ARM, "ARM"},
         {CPUArchitecture::ARM64, "ARM64"},
+        {CPUArchitecture::S390X, "S390X"},
         {nullopt, "ARM6"},
         {nullopt, "AR"},
         {nullopt, "Intel"},
@@ -107,6 +108,7 @@ TEST_CASE ("from_cpu_architecture", "[system]")
         {CPUArchitecture::X64, "x64"},
         {CPUArchitecture::ARM, "arm"},
         {CPUArchitecture::ARM64, "arm64"},
+        {CPUArchitecture::S390X, "S390X"},
     };
 
     for (auto&& instance : test_cases)
@@ -137,6 +139,8 @@ TEST_CASE ("guess_visual_studio_prompt", "[system]")
     set_environment_variable("VSCMD_ARG_TGT_ARCH", "arm64");
     CHECK(guess_visual_studio_prompt_target_architecture()
         .value_or_exit(VCPKG_LINE_INFO) == CPUArchitecture::ARM64);
+    CHECK(guess_visual_studio_prompt_target_architecture()
+        .value_or_exit(VCPKG_LINE_INFO) == CPUArchitecture::S390X);
 
     // check that apparent "nested" prompts defer to "vsdevcmd"
     set_environment_variable("VCINSTALLDIR", "anything");
@@ -152,4 +156,6 @@ TEST_CASE ("guess_visual_studio_prompt", "[system]")
     set_environment_variable("Platform", "x64");
     CHECK(guess_visual_studio_prompt_target_architecture()
         .value_or_exit(VCPKG_LINE_INFO) == CPUArchitecture::X64);
+    CHECK(guess_visual_studio_prompt_target_architecture()
+        .value_or_exit(VCPKG_LINE_INFO) == CPUArchitecture::S390X);
 }

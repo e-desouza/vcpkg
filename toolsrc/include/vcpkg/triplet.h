@@ -23,6 +23,7 @@ namespace vcpkg
         static const Triplet X64_UWP;
         static const Triplet ARM_UWP;
         static const Triplet ARM64_UWP;
+        static const Triplet S390X_LINUX;
         
         static const Triplet ARM_ANDROID;
         static const Triplet ARM64_ANDROID;

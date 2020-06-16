@@ -265,13 +265,15 @@ namespace vcpkg::Export::Prefab
             {CPUArchitecture::ARM, "armeabi-v7a"},
             {CPUArchitecture::ARM64, "arm64-v8a"},
             {CPUArchitecture::X86, "x86"},
-            {CPUArchitecture::X64, "x86_64"}};
+            {CPUArchitecture::X64, "x86_64"},
+            {CPUArchitecture::S390X, "s390x"}
+            };
 
         std::unordered_map<CPUArchitecture, int> cpu_architecture_api_map = {{CPUArchitecture::ARM64, 21},
                                                              {CPUArchitecture::ARM, 16},
                                                              {CPUArchitecture::X64, 21},
-                                                             {CPUArchitecture::X86, 16}};
-
+                                                             {CPUArchitecture::X86, 16},
+                                                             {CPUArchitecture::S390X, 21}};
 
         std::vector<Triplet> triplets;
         std::unordered_map<Triplet, std::string> triplet_abi_map;

@@ -38,6 +38,7 @@ namespace vcpkg
     const Triplet Triplet::X64_UWP = from_canonical_name("x64-uwp");
     const Triplet Triplet::ARM_UWP = from_canonical_name("arm-uwp");
     const Triplet Triplet::ARM64_UWP = from_canonical_name("arm64-uwp");
+    const Triplet Triplet::S390X_LINUX = from_canonical_name("s390x-linux");
 
     //
     const Triplet Triplet::ARM_ANDROID = from_canonical_name("arm-android");
@@ -76,6 +77,10 @@ namespace vcpkg
         else if (*this == ARM64_WINDOWS || *this == ARM64_UWP || *this == ARM64_ANDROID)
         {
             return CPUArchitecture::ARM64;
+        }
+        else if (*this == S390X_LINUX)
+        {
+            return CPUArchitecture::S390X;
         }
 
         return nullopt;
